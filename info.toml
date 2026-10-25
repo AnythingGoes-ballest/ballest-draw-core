@@ -1,0 +1,9 @@
+[meta]
+name = "Draw Core"
+version = "0.1.0"
+author = "AnythingGoes"
+description = "The drawing Inspect Draw and Draw Track share: strokes from the mouse on surfaces or a level plane, the layer that keeps the camera still while drawing, and the brush ring. Installed with them."
+min_host = "0.31.0"
+
+[script]
+files = ["main.as"]
