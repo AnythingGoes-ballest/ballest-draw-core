@@ -65,7 +65,6 @@ int frame = 0;
 
 UI::Window@ catcher;
 UI::Window@ ring;
-float ringShown = -1;
 
 // ---------------------------------------------------------------- the interface
 
@@ -411,11 +410,6 @@ void UpdateRing(bool active)
         r = 2;
     if (r > 400)
         r = 400;
-    if (Math::abs(r - ringShown) >= 2)
-    {
-        ringShown = r;
-        ring.SetCornerRadius(r);
-    }
     ring.SetRect(mx - r, my - r, 2 * r, 2 * r);
     ring.visible = true;
 }
@@ -434,6 +428,9 @@ void Main()
     @ring = UI::CreateWindow();
     ring.SetBackground(1, 1, 1, 0.18f);
     ring.SetPadding(0, 0);
+    // set once: a corner radius past half the ring's size keeps it a circle at every size (setting it as the ring
+    // grows built the window again each time: measured, every frame the cursor moved)
+    ring.SetCornerRadius(400);
     ring.zOrder = 115;
     ring.visible = false;
 }
